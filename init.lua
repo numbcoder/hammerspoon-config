@@ -40,6 +40,13 @@ for key, app in pairs(key2App) do
   hs.hotkey.bind(appHyper, tostring(key), function() hs.application.launchOrFocus(app) end)
 end
 
+-----------------------------------------------
+-- Hyper space to show window hints
+-----------------------------------------------
+hs.hotkey.bind(appHyper, "escape", function() hs.hints.windowHints() end)
+hs.hotkey.bind(appHyper, "space", function() hs.hints.windowHints() end)
+
+
 -- lock screen
 hs.hotkey.bind(appHyper, 'l', hs.caffeinate.lockScreen)
 
@@ -87,14 +94,6 @@ hs.hotkey.bind(hyper, "n", function() hs.window.focusedWindow():moveOneScreenWes
 -----------------------------------------------
 hs.hotkey.bind(hyper, "1", function() resize(0, 0, 2, 2) end)
 hs.hotkey.bind(hyper, "2", function() resize(1, 0, 2, 2) end)
-
------------------------------------------------
--- Hyper i to show window hints
------------------------------------------------
-hs.hotkey.bind(hyper, "i", function() hs.hints.windowHints() end)
-
-
-hs.hotkey.bind(hyper, "q", function() chatmode() end)
 
 -----------------------------------------------
 -- Hyper wsad to switch window focus
