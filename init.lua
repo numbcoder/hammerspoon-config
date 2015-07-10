@@ -28,10 +28,13 @@ local key2App = {
   [2] = 'QQ',
   [3] = 'Safari',
   q = 'iTerm',
+  b = 'Terminal',
   w = 'MacVim',
   e = 'RubyMine',
   a = 'Finder',
-  s = 'Sublime Text',
+  -- d = 'Emacs',
+  s = 'Atom',
+  d = 'Sublime Text',
   x = 'Xcode',
   z = 'Dash',
   c = 'AppCleaner',
@@ -46,9 +49,16 @@ end
 hs.hotkey.bind(appHyper, "escape", function() hs.hints.windowHints() end)
 hs.hotkey.bind(appHyper, "space", function() hs.hints.windowHints() end)
 
+-----------------------------------------------
+-- Map alt + h, j, k, k to left, down, up, right
+-----------------------------------------------
+keyMap(appHyper, "h", {}, "left")
+keyMap(appHyper, "j", {}, "down")
+keyMap(appHyper, "k", {}, "up")
+keyMap(appHyper, "l", {}, "right")
 
 -- lock screen
-hs.hotkey.bind(appHyper, 'l', hs.caffeinate.lockScreen)
+--hs.hotkey.bind(appHyper, 'l', hs.caffeinate.lockScreen)
 
 -----------------------------------------------
 -- hyper h, j, k, l for left, down, up, right half window

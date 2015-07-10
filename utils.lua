@@ -42,3 +42,12 @@ function center()
   win:setFrame(f)
 end
 
+-- map key to key
+function keyMap(fromMods, fromKey, toMods, toKey)
+  local event = hs.eventtap.event.newKeyEvent(toMods, toKey, true)
+  local action = function()
+    --hs.eventtap.keyStroke(toMods, toKey)
+    event:post()
+  end
+  hs.hotkey.bind(fromMods, fromKey, action, nil, action)
+end
