@@ -2,7 +2,7 @@ require 'utils'
 -----------------------------------------------
 -- Set hyper to ctrl + shift
 -----------------------------------------------
-local hyper = {"ctrl", "shift"}
+local hyper = {"alt", "shift"}
 
 --hs.window.animationDuration = 0
 
@@ -25,17 +25,20 @@ local appHyper = {"alt"}
 
 local key2App = {
   [1] = 'Google Chrome',
-  [2] = 'QQ',
-  [3] = 'Safari',
+  [2] = 'WeChat',
+  [3] = 'QQ',
+  [4] = '企业微信',
   q = 'iTerm',
   b = 'Terminal',
   w = 'MacVim',
-  e = 'RubyMine',
+  -- e = 'VimR',
+  -- e = 'RubyMine',
   a = 'Finder',
   -- d = 'Emacs',
-  s = 'Atom',
-  d = 'Sublime Text',
-  x = 'Xcode',
+  d = 'Visual Studio Code',
+  e = 'Atom',
+  s = 'Sublime Text',
+  -- x = 'Xcode',
   z = 'Dash',
   c = 'AppCleaner',
 }
@@ -56,6 +59,8 @@ keyMap(appHyper, "h", {}, "left")
 keyMap(appHyper, "j", {}, "down")
 keyMap(appHyper, "k", {}, "up")
 keyMap(appHyper, "l", {}, "right")
+-- fix for leopold keyboard
+keyMap({"cmd"}, "escape", {"cmd"}, '`')
 
 -- lock screen
 --hs.hotkey.bind(appHyper, 'l', hs.caffeinate.lockScreen)

@@ -51,3 +51,18 @@ function keyMap(fromMods, fromKey, toMods, toKey)
   end
   hs.hotkey.bind(fromMods, fromKey, action, nil, action)
 end
+
+-- get current selected text
+function current_selection()
+   local elem=hs.uielement.focusedElement()
+   local sel=nil
+   if elem then
+      sel=elem:selectedText()
+   end
+   if (not sel) or (sel == "") then
+      hs.eventtap.keyStroke({"cmd"}, "c")
+      hs.timer.usleep(20000)
+      sel=hs.pasteboard.getContents()
+   end
+   return (sel or "")
+ end
