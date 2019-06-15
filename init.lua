@@ -2,7 +2,7 @@ require 'utils'
 -----------------------------------------------
 -- Set hyper to ctrl + shift
 -----------------------------------------------
-local hyper = {"alt", "shift"}
+local hyper = {"ctrl", "shift", "cmd"}
 
 --hs.window.animationDuration = 0
 
@@ -27,17 +27,18 @@ local key2App = {
   [1] = 'Google Chrome',
   [2] = 'WeChat',
   [3] = 'QQ',
-  [4] = '企业微信',
+  [4] = 'Telegram',
+  [5] = '企业微信',
   q = 'iTerm',
-  b = 'Terminal',
-  w = 'MacVim',
-  -- e = 'VimR',
+  -- b = 'Terminal',
+  -- w = 'MacVim',
+  w = 'VimR',
   -- e = 'RubyMine',
+  e = 'Emacs',
   a = 'Finder',
-  -- d = 'Emacs',
-  d = 'Visual Studio Code',
-  e = 'Atom',
-  s = 'Sublime Text',
+  s = 'Visual Studio Code',
+  -- e = 'Atom',
+  -- d = 'Sublime Text',
   -- x = 'Xcode',
   z = 'Dash',
   c = 'AppCleaner',
@@ -55,10 +56,10 @@ hs.hotkey.bind(appHyper, "space", function() hs.hints.windowHints() end)
 -----------------------------------------------
 -- Map alt + h, j, k, k to left, down, up, right
 -----------------------------------------------
-keyMap(appHyper, "h", {}, "left")
-keyMap(appHyper, "j", {}, "down")
-keyMap(appHyper, "k", {}, "up")
-keyMap(appHyper, "l", {}, "right")
+-- keyMap(appHyper, "h", {}, "left")
+-- keyMap(appHyper, "j", {}, "down")
+-- keyMap(appHyper, "k", {}, "up")
+-- keyMap(appHyper, "l", {}, "right")
 -- fix for leopold keyboard
 keyMap({"cmd"}, "escape", {"cmd"}, '`')
 
