@@ -26,16 +26,17 @@ local appHyper = {"alt"}
 local key2App = {
   [1] = 'Google Chrome',
   [2] = 'WeChat',
-  [3] = 'QQ',
+  [3] = 'DingTalk',
   [4] = 'Telegram',
-  [5] = '企业微信',
+  [5] = 'QQ',
   q = 'iTerm',
   -- b = 'Terminal',
   -- w = 'MacVim',
   w = 'VimR',
   -- e = 'RubyMine',
   e = 'Emacs',
-  a = 'Finder',
+  -- a = 'Finder',
+  a = 'QSpace',
   s = 'Visual Studio Code',
   -- e = 'Atom',
   -- d = 'Sublime Text',
@@ -74,6 +75,25 @@ hs.hotkey.bind(hyper, "h", function() resize(0, 0, 2, 1) end)
 hs.hotkey.bind(hyper, "j", function() resize(0, 1, 1, 2) end)
 hs.hotkey.bind(hyper, "k", function() resize(0, 0, 1, 2) end)
 hs.hotkey.bind(hyper, "m", function() resize(0, 0, 1, 1) end)
+
+-----------------------------------------------
+-- change volume
+-----------------------------------------------
+function changeVolume(diff)
+  return function()
+    local current = hs.audiodevice.defaultOutputDevice():volume()
+    local new = math.min(100, math.max(0, math.floor(current + diff)))
+    if new > 0 then
+      hs.audiodevice.defaultOutputDevice():setMuted(false)
+    end
+    hs.alert.closeAll(0.0)
+    hs.alert.show("Volume " .. new .. "%", {}, 0.5)
+    hs.audiodevice.defaultOutputDevice():setVolume(new)
+  end
+end
+-- system default step is 6
+hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'Down', changeVolume(-3))
+hs.hotkey.bind({'ctrl', 'alt', 'cmd'}, 'Up', changeVolume(3))
 
 -----------------------------------------------
 -- hyper g, ; for horizontal, vertical fold window
