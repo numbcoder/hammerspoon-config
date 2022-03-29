@@ -64,3 +64,28 @@ function current_selection()
    end
    return (sel or "")
  end
+
+-- change audio volume
+function changeAudioVolume(diff)
+  local current = hs.audiodevice.defaultOutputDevice():volume()
+  local new = math.min(100, math.max(0, math.floor(current + diff)))
+  if new > 0 then
+    hs.audiodevice.defaultOutputDevice():setMuted(false)
+  end
+  hs.alert.closeAll(0.0)
+  hs.alert.show("Volume " .. new .. "%", {}, 0.5)
+  hs.audiodevice.defaultOutputDevice():setVolume(new)
+end
+
+-- connected to airPods by name
+function connectToAirPods(name)
+  local current = hs.audiodevice.defaultInputDevice()
+  if current and current:name() == name then return true end
+
+  local device = hs.audiodevice.findOutputByName(name)
+  if device == nil then
+    hs.alert.show(name.." is not connected")
+  else
+    return device:setDefaultOutputDevice()
+  end
+end
